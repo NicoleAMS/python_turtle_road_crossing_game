@@ -22,7 +22,7 @@ class CarManager(Turtle):
         car.goto(300, random.randint(-250, 250))
         self.cars.append(car)
 
-    def move(self):
+    def move_cars(self):
         for car in self.cars:
             new_x = car.xcor() - self.speed
             car.goto(new_x, car.ycor())

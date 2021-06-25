@@ -17,6 +17,7 @@ screen.onkey(player.move, "Up")
 
 game_is_on = True
 game_loop = 0
+sleep = 0.1
 
 while game_is_on:
     # generate a car every 1sec
@@ -35,12 +36,13 @@ while game_is_on:
 
     if player.at_finish:
         car_manager.increase_speed()
-        player.at_finish = False
         scoreboard.increase_level()
+        sleep *= 0.8
+        player.at_finish = False
 
-    car_manager.move()
+    car_manager.move_cars()
 
-    time.sleep(0.1)
+    time.sleep(sleep)
     screen.update()
     game_loop += 1
 
