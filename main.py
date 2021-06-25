@@ -10,6 +10,7 @@ screen.tracer(0)
 
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(player.move, "Up")
@@ -26,6 +27,7 @@ while game_is_on:
         # detect collision with the player and end game
         if car.distance(player) < 25:
             game_is_on = False
+            scoreboard.game_over()
 
         # remove car after it has reached the other side
         if car.xcor() < -350:
@@ -34,6 +36,7 @@ while game_is_on:
     if player.at_finish:
         car_manager.increase_speed()
         player.at_finish = False
+        scoreboard.increase_level()
 
     car_manager.move()
 
